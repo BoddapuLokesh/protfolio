@@ -3,14 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Lokesh Boddapu | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
-        h1 { color: #007bff; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #2a2a2a;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+        }
+
+        p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x900/?technology');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: #00d4ff;
+            color: #1a1a1a;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #00b0cc;
+        }
+
+        .skills-grid, .projects-grid, .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill, .project, .achievement {
+            background-color: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill:hover, .project:hover, .achievement:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: #00d4ff;
+            color: #1a1a1a;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #00b0cc;
+        }
+
+        footer {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            nav a {
+                margin: 0 1rem;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Portfolio!</h1>
-    <p>Hi, I'm [Your Name]. This is my portfolio website.</p>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Lokesh Boddapu</h1>
+        <p>Computer Science & Engineering Student | AI & ML Enthusiast</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm Lokesh Boddapu, a B.Tech student in Computer Science and Engineering (AI & ML) at Gayatri Vidya Parishad College of Engineering (A). With a CGPA of 8.61, I’m passionate about technology, particularly in AI, machine learning, and full-stack development using the MERN stack. I enjoy solving problems, working in teams, and exploring new technologies.</p>
+        
+        <h2>Education</h2>
+        <p><strong>Bachelor in Computer Science and Engineering (AI & ML)</strong><br>Gayatri Vidya Parishad College of Engineering (A)<br>CGPA: 8.61 (Till Date)</p>
+        <p><strong>Intermediate</strong><br>Sri Chaitanya Junior College<br>Percentage: 91</p>
+
+        <h2>Tech Skills</h2>
+        <div class="skills-grid">
+            <div class="skill">Python (Intermediate)</div>
+            <div class="skill">C++ (Intermediate)</div>
+            <div class="skill">Java (Intermediate)</div>
+            <div class="skill">Data Structures</div>
+            <div class="skill">MERN Stack</div>
+            <div class="skill">MySQL</div>
+            <div class="skill">Machine Learning (Intermediate)</div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project">
+                <h3>Time-Table Generator</h3>
+                <p>Using AI and ML algorithms and MERN stack, I developed a web application to generate a time table based on various parameters inputted by the user.</p>
+                <p><em>Status: BallisLife</em></p>
+            </div>
+            <div class="project">
+                <h3>Automatic Bus Scheduling and Route Management System</h3>
+                <p>Using ML algorithms and various technologies, I developed a sample prototype for an enterprise-level project and designed the architecture for the enterprise level one.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <h2>Achievements & Hackathons</h2>
+        <div class="achievements-grid">
+            <div class="achievement">Scored 3rd in Intra college level coding competition</div>
+            <div class="achievement">Shortlisted for SIH 2023 and 2024 in intra college level</div>
+            <div class="achievement">Shortlisted for final round in Pinnacle (Business Idea presentation) conducted by IITM, Gwalior</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <p>Phone: +91 7680817734</p>
+            <p>Email: <a href="mailto:lokeshboddapu1234@gmail.com">lokeshboddapu1234@gmail.com</a></p>
+            <p>Location: Madhurawada, Visakhapatnam-530046</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/boddapu-lokesh-4313b4271" target="_blank">boddapu-lokesh-4313b4271</a></p>
+            <p>GitHub: <a href="https://github.com/lokeshboddapu-123" target="_blank">lokeshboddapu-123</a></p>
+        </div>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Lokesh Boddapu. All rights reserved.</p>
+    </footer>
 </body>
 </html>
