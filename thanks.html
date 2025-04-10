@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Lokesh Boddapu</title>
+    <meta name="description" content="Thank you for contacting Lokesh Boddapu">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #f8f9fa;
+            --text-primary: #212529;
+            --accent: #3a86ff;
+            --accent-gradient: linear-gradient(90deg, #3a86ff, #4361ee);
+            --glass: rgba(255, 255, 255, 0.8);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #121212;
+            --text-primary: #e0e0e0;
+            --glass: rgba(30, 30, 30, 0.7);
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            transition: background var(--transition-speed), color var(--transition-speed);
+        }
+        
+        .thank-you-container {
+            max-width: 600px;
+            padding: 3rem;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 194, 255, 0.3);
+        }
+        
+        .btn i {
+            font-size: 1em;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Dark/Light Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 26px;
+            background: var(--glass);
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            justify-content: space-between;
+            z-index: 100;
+        }
+        
+        .theme-toggle i {
+            font-size: 1rem;
+            color: var(--text-primary);
+            z-index: 1;
+        }
+        
+        .toggle-ball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            left: 3px;
+            transition: transform 0.3s;
+        }
+        
+        [data-theme="dark"] .toggle-ball {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+        <span class="toggle-ball"></span>
+    </div>
+
+    <div class="thank-you-container">
+        <h1>Thank You!</h1>
+        <p>Your message has been successfully sent. I'll get back to you as soon as possible.</p>
+        <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Homepage</a>
+    </div>
+    
+    <script>
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>
