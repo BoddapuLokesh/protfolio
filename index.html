@@ -1505,10 +1505,15 @@
             </div>
             <form class="contact-form" action="https://formsubmit.co/lokeshboddapu1234@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+                <!-- Fix the repository name to match exactly as it appears on GitHub -->
                 <input type="hidden" name="_next" value="https://boddapulokesh.github.io/protfolio/thanks.html">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_autoresponse" value="Thank you for your message! I'll get back to you soon.">
+                <!-- Change template to box which works better with redirects -->
+                <input type="hidden" name="_template" value="box">
+                <!-- Add form ID to enhance reliability -->
+                <input type="hidden" name="_form_id" value="portfolio-contact">
                 <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_autoresponse" value="Thank you for your message! I'll get back to you soon.">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Your Message" required></textarea>
