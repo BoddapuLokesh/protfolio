@@ -18,7 +18,6 @@
         --text-secondary: #495057; /* Medium gray for subtitles */
         --accent: #3a86ff; /* Professional blue accent */
         --accent-secondary: #4361ee; /* Secondary blue for depth */
-        --accent-gradient: linear-gradient(90deg, #3a86ff, #4361ee); /* Subtle blue gradient */
         --glass: rgba(255, 255, 255, 0.8); /* Higher opacity for cleaner look */
         --shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Lighter, more subtle shadow */
         --border-glass: 1px solid rgba(0, 0, 0, 0.05);
@@ -43,7 +42,6 @@
         --text-secondary: #a0a0a0; /* Medium gray for subtitles */
         --accent: #4895ef; /* Softer blue accent */
         --accent-secondary: #3f37c9; /* Deeper blue for contrast */
-        --accent-gradient: linear-gradient(90deg, #4895ef, #3f37c9); /* Professional gradient */
         --glass: rgba(30, 30, 30, 0.7); /* Cleaner glass effect */
         --shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Professional shadow */
         --border-glass: 1px solid rgba(255, 255, 255, 0.05);
@@ -71,7 +69,7 @@
 
         /* Add these new utility classes for skill cards and project cards */
         .skill-back {
-            background: var(--accent-gradient);
+            background: var(--accent); /* Use solid accent color */
         }
 
         .project-card:hover .project-links a:hover {
@@ -195,12 +193,11 @@
         }
 
         .btn-primary {
-            background: var(--accent-gradient);
+            background: var(--accent); /* Use solid accent color */
             color: white;
             box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
         }
         
-        /* Remove the pseudo-element completely */
         .btn-primary::before {
             content: none;
         }
@@ -218,9 +215,7 @@
         
         .btn-resume {
             background: transparent;
-            border: 2px solid;
-            border-image: var(--accent-gradient);
-            border-image-slice: 1;
+            border: 2px solid var(--accent); /* Use solid accent border */
             background-clip: padding-box;
             color: var(--text-primary);
         }
@@ -254,10 +249,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--accent); /* Use solid accent color */
             position: relative;
             display: inline-block;
         }
@@ -323,10 +315,7 @@
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--accent); /* Use solid accent color */
             animation: fadeIn 1s ease-out;
         }
 
@@ -355,7 +344,7 @@
             right: 0;
             width: 50%;
             height: 100%;
-            background: linear-gradient(45deg, #00c2ff, #ff7700);
+            background: var(--accent); /* Use solid accent color */
             clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
             z-index: 1;
             opacity: 0.1;
@@ -404,10 +393,7 @@
             transform: translateY(20px);
             transition: opacity var(--transition-speed), 
                       transform var(--transition-speed);
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--accent); /* Use solid accent color */
             font-weight: 700;
         }
         
@@ -448,7 +434,6 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smoother transition */
             display: flex; /* Use flexbox for layout */
             flex-direction: column; /* Stack image and info vertically */
-            height: 420px; /* Fixed height for consistency */
         }
 
         .improved-project-card:hover {
@@ -491,7 +476,7 @@
             margin-bottom: 1rem; /* Increased margin */
         }
         .project-badges span {
-            background: var(--accent-gradient); /* Use gradient for badges */
+            background: var(--accent); /* Use solid accent color */
             color: white; /* White text on gradient */
             font-size: 0.75rem; /* Slightly smaller badge text */
             padding: 0.25rem 0.8rem; /* Adjusted padding */
@@ -623,7 +608,7 @@
         }
 
         .skill-back {
-            background: var(--accent-gradient);
+            background: var(--accent); /* Use solid accent color */
             color: white;
             transform: rotateY(180deg);
             padding: 0.8rem !important;
@@ -635,9 +620,6 @@
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
             color: white !important; /* Ensure text is white regardless of theme */
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Add shadow for better readability */
-            background-image: 
-                linear-gradient(90deg, rgba(58, 134, 255, 0.95), rgba(67, 97, 238, 0.95)), /* Darker, more opaque gradient */
-                radial-gradient(circle at bottom right, transparent 70%, rgba(255,255,255,0.08) 100%);
         }
         
         .skill-back h4 {
@@ -808,13 +790,6 @@
         
         .skill-card:hover .skill-back h4 {
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
-        /* Add subtle background pattern for visual interest */
-        .skill-back {
-            background-image: 
-                linear-gradient(var(--accent-gradient)), 
-                radial-gradient(circle at bottom right, transparent 70%, rgba(255,255,255,0.08) 100%);
         }
         
         /* Performance optimization */
@@ -1012,7 +987,7 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: var(--accent-gradient);
+            background: var(--accent); /* Use solid accent color */
             border-radius: 50%;
             left: 3px;
             transition: transform 0.3s;
@@ -1155,7 +1130,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--accent-gradient);
+            background: var(--accent); /* Use solid accent color */
             color: white;
             border-radius: 50%;
         }
@@ -1255,9 +1230,7 @@
         .skill-back {
             color: white !important; /* Ensure text is white regardless of theme */
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Add shadow for better readability */
-            background-image: 
-                linear-gradient(90deg, rgba(58, 134, 255, 0.95), rgba(67, 97, 238, 0.95)), /* Darker, more opaque gradient */
-                radial-gradient(circle at bottom right, transparent 70%, rgba(255,255,255,0.08) 100%);
+            background: var(--accent); /* Use solid accent color */
         }
         
         /* Make skill card back headings more visible */
@@ -1661,7 +1634,7 @@
 
     <!-- Footer -->
     <footer>
-        <h2 style="text-align:center;font-size:2rem;margin-bottom:1.2rem;background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;color:transparent;">Connect with me</h2>
+        <h2 style="text-align:center;font-size:2rem;margin-bottom:1.2rem;background:var(--accent);color:var(--card-bg);">Connect with me</h2>
         <div class="social-links" style="justify-content:center;gap:2.5rem;margin-bottom:1.5rem;">
             <a href="https://www.linkedin.com/in/lokeshboddapu/" target="_blank" aria-label="LinkedIn" style="font-size:2.4rem;color:#0a66c2;"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/lokeshboddapu" target="_blank" aria-label="GitHub" style="font-size:2.4rem;color:#333;"><i class="fab fa-github"></i></a>
@@ -1906,7 +1879,7 @@
             particlesJS('particles-js', {
                 "particles": {
                     "number": {
-                        "value": 100, /* More particles for better effect */
+                        "value": 150, /* Increased particle count */
                         "density": {
                             "enable": true,
                             "value_area": 1000
@@ -1923,7 +1896,7 @@
                         },
                     },
                     "opacity": {
-                        "value": 0.3, /* More transparent particles */
+                        "value": 0.4, /* Slightly increased particle opacity */
                         "random": true, /* Random opacity for more natural look */
                         "anim": {
                             "enable": true,
@@ -1946,7 +1919,7 @@
                         "enable": true,
                         "distance": 150,
                         "color": "#00c2ff",
-                        "opacity": 0.2, /* More subtle lines */
+                        "opacity": 0.4, /* Increased line opacity */
                         "width": 1
                     },
                     "move": {
