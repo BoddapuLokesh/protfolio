@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
       :root {
         --bg-primary: #f8f9fa; /* Light, clean background */
@@ -429,78 +430,138 @@
             margin-right: auto;
         }
 
-        .project-card {
+        /* Stronger hover effect for better interactive feedback */
+        .improved-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Slightly larger min size */
+            gap: 2.5rem; /* Increased gap */
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .improved-project-card {
             position: relative;
             overflow: hidden;
-            border-radius: var(--card-border-radius);
-            transition: transform var(--transition-speed), 
-                        box-shadow var(--transition-speed);
-            height: 250px;
-            box-shadow: var(--shadow);
+            border-radius: 12px; /* Slightly smaller radius */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* Softer shadow */
+            background: var(--card-bg); /* Use card background variable */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smoother transition */
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack image and info vertically */
+            height: 420px; /* Fixed height for consistency */
         }
 
-        .project-card img {
+        .improved-project-card:hover {
+             transform: translateY(-8px); /* More noticeable lift */
+             box-shadow: 0 12px 28px rgba(0,0,0,0.2); /* Stronger shadow on hover */
+        }
+
+        .improved-project-card img {
             width: 100%;
-            height: 100%;
+            height: 200px; /* Fixed image height */
             object-fit: cover;
-            transition: transform 0.5s;
-            content-visibility: auto; /* Modern browsers only - helps with paint performance */
-            will-change: transform; /* Hint for browser to optimize animations */
+            display: block;
+            border-radius: 12px 12px 0 0; /* Match card radius */
+            transition: transform 0.4s ease; /* Slightly slower image zoom */
         }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.3);
+        /* Add image scale on card hover */
+        .improved-project-card:hover img {
+            transform: scale(1.03); /* Subtle scale */
         }
-
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .project-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.5s, opacity 0.5s;
+        .improved-project-info {
+            /* Remove absolute positioning, let flexbox handle layout */
+            background: var(--card-bg); /* Match card background */
+            color: var(--text-primary); /* Use primary text color */
+            padding: 1.5rem; /* Increased padding */
+            border-radius: 0 0 12px 12px; /* Match card radius */
+            flex-grow: 1; /* Allow info to fill remaining space */
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            height: 100%;
         }
-        
-        .project-card:hover .project-info {
-            transform: translateY(0);
-            opacity: 1;
+        .improved-project-info h3 {
+            font-size: 1.3rem; /* Slightly larger title */
+            font-weight: 600; /* Bolder title */
+            margin-bottom: 0.75rem; /* Increased margin */
+            color: var(--accent); /* Use accent color for title */
         }
-        
-        .project-links {
+        .project-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem; /* Consistent gap */
+            margin-bottom: 1rem; /* Increased margin */
+        }
+        .project-badges span {
+            background: var(--accent-gradient); /* Use gradient for badges */
+            color: white; /* White text on gradient */
+            font-size: 0.75rem; /* Slightly smaller badge text */
+            padding: 0.25rem 0.8rem; /* Adjusted padding */
+            border-radius: 15px; /* Pill shape */
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .improved-project-info p {
+            font-size: 0.95rem; /* Slightly smaller description */
+            margin-bottom: 1rem; /* Consistent margin */
+            color: var(--text-secondary); /* Use secondary text color */
+            flex-grow: 1; /* Allow description to take available space */
+            line-height: 1.5;
+        }
+        .improved-project-info .project-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: auto; /* Push links to the bottom */
+            padding-top: 1rem; /* Add space above links */
+            border-top: 1px solid var(--border-glass); /* Subtle separator */
         }
-        
-        .project-links a {
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem;
+        .improved-project-info .project-links a {
+            color: var(--accent); /* Use accent color for links */
+            background: transparent; /* Remove background */
+            border: 1px solid var(--accent); /* Add border */
             border-radius: 50%;
-            width: 35px;
-            height: 35px;
+            width: 38px; /* Slightly larger icons */
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s, transform 0.3s;
+            font-size: 1.2rem; /* Adjusted icon size */
+            transition: background 0.2s, color 0.2s, transform 0.2s;
         }
-        
-        .project-links a:hover {
-            background: var(--accent-secondary);
-            transform: translateY(-3px);
+        .improved-project-info .project-links a:hover {
+            background: var(--accent); /* Fill background on hover */
+            color: var(--card-bg); /* Change icon color to card background */
+            transform: translateY(-2px) scale(1.05); /* Keep subtle hover effect */
+            border-color: var(--accent);
+        }
+        @media (max-width: 768px) {
+            .improved-projects-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+                gap: 1.5rem;
+            }
+            .improved-project-card {
+                height: auto; /* Auto height on mobile */
+            }
+            .improved-project-card img {
+                height: 180px; /* Adjust image height for mobile */
+            }
+            .improved-project-info {
+                padding: 1rem; /* Adjust padding */
+            }
+            .improved-project-info h3 {
+                font-size: 1.15rem;
+            }
+            .improved-project-info p {
+                font-size: 0.9rem;
+            }
+            .project-badges span {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+            .improved-project-info .project-links a {
+                 width: 34px;
+                 height: 34px;
+                 font-size: 1.1rem;
+            }
         }
 
         /* Skills - 3D Cards */
@@ -785,27 +846,93 @@
         /* Optimize mobile experience */
         @media (max-width: 768px) {
             .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
             }
-            
             .skill-card {
+                height: 140px;
+                min-width: 0;
+            }
+            .skill-front h3 {
+                font-size: 1rem;
+            }
+            .skill-back h4 {
+                font-size: 0.85rem;
+            }
+            .skill-back li {
+                font-size: 0.7rem;
+                padding: 0.18rem 0.2rem;
+            }
+            .interests-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .interest-item {
+                padding: 1.2rem 0.7rem;
+                margin-bottom: 0.5rem;
+            }
+            .interest-item i {
+                font-size: 2.1rem;
+                margin-bottom: 1rem;
+            }
+            .interest-item h3 {
+                font-size: 1rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .project-card {
                 height: 180px;
             }
-            
-            .skill-front h3 {
-                font-size: 1.1rem;
+            .project-info {
+                padding: 1rem;
+                font-size: 0.95rem;
             }
-            
-            .skill-back h4 {
-                font-size: 0.9rem;
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
             }
-            
-            .skill-back li {
-                font-size: 0.75rem;
-                padding: 0.25rem 0.3rem;
+            section {
+                padding: 2.5rem 2.5%;
+            }
+            .glass-card {
+                padding: 1.2rem !important;
+            }
+            .btn-group {
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+            .btn {
+                width: 100%;
+                font-size: 1rem;
+                padding: 0.7rem 1rem;
+            }
+            header {
+                padding: 1rem 2.5%;
+            }
+            nav ul {
+                width: 90%;
+                gap: 1.2rem;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .contact-info p {
+                font-size: 0.95rem;
+            }
+            .contact-form input,
+            .contact-form textarea {
+                padding: 0.7rem;
+                font-size: 0.95rem;
+            }
+            .contact-form button {
+                width: 100%;
+                font-size: 1rem;
             }
         }
-        
+
         /* Optimized rendering for skill cards */
         .skill-card {
             contain: layout style;
@@ -814,7 +941,7 @@
         /* Interests Grid */
         .interests-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
 
@@ -1118,17 +1245,14 @@
         /* Ensure all font sizes are consistent with design */
         .section-title {
             font-size: 2.5rem;
-            /* ...existing code... */
         }
         
         .glass-card h3 {
             font-size: 1.5rem;
-            /* ...existing code... */
         }
 
         /* Fix skill card back text visibility in light mode */
         .skill-back {
-            /* ...existing code... */
             color: white !important; /* Ensure text is white regardless of theme */
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Add shadow for better readability */
             background-image: 
@@ -1138,7 +1262,6 @@
         
         /* Make skill card back headings more visible */
         .skill-back h4 {
-            /* ...existing code... */
             font-weight: 600; /* Make headings bolder */
             letter-spacing: 1px;
             color: white;
@@ -1146,7 +1269,6 @@
         
         /* Ensure list items are clearly visible */
         .skill-back li {
-            /* ...existing code... */
             color: white;
             font-weight: 500;
             background: rgba(255, 255, 255, 0.15); /* Slightly stronger background */
@@ -1154,8 +1276,6 @@
             border-right: 2px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Stronger shadow */
         }
-        
-        /* Stronger hover effect for better interactive feedback */
     </style>
 </head>
 <body>
@@ -1191,7 +1311,7 @@
             <p>AI/ML Engineer specializing in Deep Learning, NLP, and Cloud Computing. Passionate about building scalable AI systems.</p>
             <div class="btn-group">
                 <a href="#projects" class="btn btn-primary"><i class="fas fa-project-diagram"></i>View My Work</a>
-                <a href="Lokesh Boddapu - Resume.pdf" class="btn btn-resume" download><i class="fas fa-file-download"></i>Download Resume</a>
+                <a href="lokesh.pdf" class="btn btn-resume" download><i class="fas fa-file-download"></i>Download Resume</a>
                 <a href="#contact" class="btn btn-secondary"><i class="fas fa-comment"></i>Let's Talk</a>
             </div>
         </div>
@@ -1238,29 +1358,48 @@
     <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
+        <div class="projects-grid improved-projects-grid">
             <!-- Project 1 -->
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Time-Table Generator">
-                <div class="project-info">
+            <div class="improved-project-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Time-Table Generator" loading="lazy">
+                <div class="improved-project-info">
                     <h3>Time-Table Generator</h3>
-                    <p>Django-based scheduler using Genetic Algorithms</p>
+                    <div class="project-badges">
+                        <span>Django</span><span>Python</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span>
+                    </div>
+                    <p>Automates academic schedule creation using genetic algorithms to optimize classroom allocation and resolve scheduling conflicts.</p>
                     <div class="project-links">
                         <a href="https://github.com/BoddapuLokesh/Time-Table-Generator" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
             </div>
-            
             <!-- Project 2 -->
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tesla Stock Prediction">
-                <div class="project-info">
+            <div class="improved-project-card">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tesla Stock Prediction" loading="lazy">
+                <div class="improved-project-info">
                     <h3>Tesla Stock Prediction</h3>
-                    <p>LSTM model with sentiment analysis</p>
+                    <div class="project-badges">
+                        <span>Python</span><span>TensorFlow</span><span>NLTK</span><span>Pandas</span><span>NumPy</span>
+                    </div>
+                    <p>Stock price prediction using LSTM neural networks and sentiment analysis from financial news and social media for improved accuracy.</p>
                     <div class="project-links">
                         <a href="https://github.com/BoddapuLokesh/Stock-Analysis" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="improved-project-card">
+                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Disease Prediction Model Comparison" loading="lazy">
+                <div class="improved-project-info">
+                    <h3>Disease Prediction Model Comparison</h3>
+                    <div class="project-badges">
+                        <span>Python</span><span>Scikit-learn</span><span>Pandas</span><span>Matplotlib</span>
+                    </div>
+                    <p>Developed and compared multiple ML models to predict diseases based on user-input symptoms. Evaluated using accuracy and confusion matrix.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/BoddapuLokesh/Disease-Prediction" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -1284,11 +1423,11 @@
                             <li>Python</li>
                             <li>Java</li>
                             <li>C/C++</li>
+                            <li>SQL</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
             <!-- Skill 2 - Tools & IDEs -->
             <div class="skill-card">
                 <div class="skill-inner">
@@ -1307,7 +1446,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- Skill 3 - AI -->
             <div class="skill-card">
                 <div class="skill-inner">
@@ -1321,12 +1459,12 @@
                             <li>Machine Learning</li>
                             <li>Deep Learning</li>
                             <li>NLP</li>
+                            <li>Scheduling Algorithms</li>
                             <li>Genetic Algorithms</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
             <!-- Skill 4 - Libraries -->
             <div class="skill-card">
                 <div class="skill-inner">
@@ -1406,10 +1544,14 @@
                     <div class="skill-back">
                         <h4>Relevant Coursework</h4>
                         <ul>
-                            <li>Data Structures & Algorithms</li>
+                            <li>Data Structures</li>
+                            <li>Algorithms</li>
+                            <li>OOP</li>
+                            <li>Database Systems</li>
                             <li>Operating Systems</li>
-                            <li>Object-Oriented Programming</li>
-                            <li>Database Management Systems</li>
+                            <li>Machine Learning</li>
+                            <li>Deep Learning</li>
+                            <li>NLP</li>
                         </ul>
                     </div>
                 </div>
@@ -1446,15 +1588,13 @@
                 <div class="interest-item">
                     <i class="fas fa-laptop-code floating"></i>
                     <h3>Competitive Programming</h3>
-                    <p>Solving algorithmic challenges on platforms like LeetCode and participating in hackathons</p>
+                    <p>Solving algorithmic challenges on platforms like LeetCode and coding competitions</p>
                 </div>
-                
                 <div class="interest-item">
                     <i class="fas fa-basketball-ball floating"></i>
                     <h3>Basketball</h3>
-                    <p>Playing basketball regularly to stay active and build teamwork skills</p>
+                    <p>Playing basketball to improve teamwork and maintain physical fitness</p>
                 </div>
-                
                 <div class="interest-item">
                     <i class="fas fa-microchip floating"></i>
                     <h3>Exploring New Technologies</h3>
@@ -1486,10 +1626,6 @@
             <div class="achievement-item">
                 <h3>National Semi-finalists in Tata Imagination Challenge 2024</h3>
                 <p class="exp-meta">Tata Group</p>
-            </div>
-            <div class="achievement-item" style="margin-top: 2rem;">
-                <h3>Finalist for Innovate-X Optima</h3>
-                <p class="exp-meta">IIT Kharagpur</p>
             </div>
         </div>
     </section>
@@ -1525,11 +1661,14 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2024 Lokesh Boddapu. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://linkedin.com/in/l15022005" target="_blank" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/BoddapuLokesh" target="_blank" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a>
+        <h2 style="text-align:center;font-size:2rem;margin-bottom:1.2rem;background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;color:transparent;">Connect with me</h2>
+        <div class="social-links" style="justify-content:center;gap:2.5rem;margin-bottom:1.5rem;">
+            <a href="https://www.linkedin.com/in/lokeshboddapu/" target="_blank" aria-label="LinkedIn" style="font-size:2.4rem;color:#0a66c2;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/lokeshboddapu" target="_blank" aria-label="GitHub" style="font-size:2.4rem;color:#333;"><i class="fab fa-github"></i></a>
+            <a href="mailto:lokeshboddapu@gmail.com" aria-label="Email" style="font-size:2.4rem;color:#d44638;"><i class="fas fa-envelope"></i></a>
         </div>
+        <p>© 2025 Lokesh Boddapu. All rights reserved.</p>
+        <p>Designed and Developed by Lokesh Boddapu.</p>
     </footer>
 
     <!-- Scripts -->

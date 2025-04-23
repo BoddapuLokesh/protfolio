@@ -17,7 +17,7 @@ My personal portfolio website showcasing my skills, projects, and experience in 
 - FormSubmit.co for form handling
 
 ## View Live
-[View the live website](https://boddapulokesh.github.io/portfolio/)
+[View the live website](https://boddapulokesh.github.io/protfolio)
 
 ## Contact
 For any inquiries, please reach out at lokeshboddapu1234@gmail.com
