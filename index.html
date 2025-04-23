@@ -12,46 +12,92 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
       :root {
-        --bg-primary: #f8f9fa; /* Light, clean background */
-        --bg-secondary: #e9ecef; /* Subtle secondary background */
-        --text-primary: #212529; /* Rich dark gray for main text */
-        --text-secondary: #495057; /* Medium gray for subtitles */
-        --accent: #3a86ff; /* Professional blue accent */
-        --accent-secondary: #4361ee; /* Secondary blue for depth */
-        --glass: rgba(255, 255, 255, 0.8); /* Higher opacity for cleaner look */
-        --shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Lighter, more subtle shadow */
-        --border-glass: 1px solid rgba(0, 0, 0, 0.05);
-        --card-hover-transform: translateY(-5px); /* More subtle card movement */
-        --success-color: #38b000; /* Professional green */
-        --card-bg: #ffffff; /* Clean white card background */
+        --bg-primary: #F7F8FA; /* Slightly warmer off-white background */
+        --bg-secondary: #ECEEF2; /* Warmer secondary background */
+        --text-primary: #2A2C30; /* Softened from pure black for better eye comfort */
+        --text-secondary: #555A63; /* Slightly lighter gray for better readability */
+        --accent: #2547A9; /* Brighter navy blue accent */
+        --accent-secondary: #3A78E2; /* More vibrant royal blue */
+        --accent-highlight: #62D3FF; /* Brighter sky blue for better visibility */
+        --glass: rgba(247, 248, 250, 0.8); /* Adjusted for new background */
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Gentler shadow */
+        --border-glass: 1px solid #C5C8CF; /* Silvery border */
+        --card-hover-transform: translateY(-4px); /* Subtle card movement */
+        --success-color: #3E8556; /* Professional green */
+        --card-bg: #E8EAED; /* Card background */
         --transition-speed: 0.3s; /* Standardized transition speed */
         --section-spacing: 6rem; /* Consistent section spacing */
-        --card-border-radius: 16px; /* Standardized border radius */
+        --card-border-radius: 10px; /* Standardized border radius */
         --card-padding: 2rem; /* Standardized card padding */
         --animation-stagger: 0.05s; /* Standardized stagger delay */
         --content-max-width: 1200px; /* Standardize content width */
-        --skill-item-bg: rgba(255, 255, 255, 0.12);
-        --skill-item-hover: rgba(255, 255, 255, 0.25);
+        --skill-item-bg: rgba(244, 245, 247, 0.15);
+        --skill-item-hover: rgba(244, 245, 247, 0.3);
       }
 
       [data-theme="dark"] {
-        /* Dark Professional Theme */
-        --bg-primary: #121212; /* Neutral dark background */
-        --bg-secondary: #1e1e1e; /* Slightly lighter dark background */
-        --text-primary: #e0e0e0; /* Light gray text for readability */
-        --text-secondary: #a0a0a0; /* Medium gray for subtitles */
-        --accent: #4895ef; /* Softer blue accent */
-        --accent-secondary: #3f37c9; /* Deeper blue for contrast */
-        --glass: rgba(30, 30, 30, 0.7); /* Cleaner glass effect */
-        --shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Professional shadow */
-        --border-glass: 1px solid rgba(255, 255, 255, 0.05);
-        --card-bg: rgba(40, 40, 40, 0.8); /* Clean dark card background */
+        /* Dark Professional Theme with reduced contrast */
+        --bg-primary: #191C21; /* Slightly lighter dark background */
+        --bg-secondary: #242830; /* Less harsh secondary background */
+        --text-primary: #E8ECF2; /* Softer white for better eye comfort */
+        --text-secondary: #C5CCD9; /* Lighter gray for improved readability */
+        --accent: #4B69B1; /* Brighter navy accent */
+        --accent-secondary: #5D89F2; /* More vibrant royal blue */
+        --accent-highlight: #79E0FF; /* Brighter sky blue highlight */
+        --glass: rgba(36, 40, 48, 0.8); /* Adjusted glass effect */
+        --shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Professional shadow */
+        --border-glass: 1px solid #3A3F4B; /* Darker border */
+        --card-bg: #1D2126; /* Card background */
+        --heading-color: #D0D9E8; /* New variable for heading color in dark mode */
+      }
+
+      /* Dark mode specific heading adjustments */
+      [data-theme="dark"] .section-title {
+        color: var(--heading-color);  
+      }
+      
+      [data-theme="dark"] .glass-card h3 {
+        color: var(--heading-color);
+      }
+      
+      [data-theme="dark"] .improved-project-info h3 {
+        color: var(--heading-color);
+      }
+      
+      [data-theme="dark"] .interest-item h3 {
+        color: var(--heading-color);
+      }
+      
+      /* Adjust skill card front text for better readability in dark mode */
+      [data-theme="dark"] .skill-front h3 {
+        color: var(--heading-color);
+      }
+
+      /* Remove section title dots */
+      .section-title::after {
+        display: none; /* Remove the dot below section titles */
+      }
+
+      /* Remove timeline dots and adjust left border for a cleaner look */
+      .exp-item, .achievement-item, .edu-item, .resp-item {
+        border-left: 2px solid var(--accent); /* Thinner, more subtle border */
+      }
+
+      .exp-item::before, .achievement-item::before, .edu-item::before, .resp-item::before {
+        display: none; /* Remove the dot markers */
+      }
+
+      /* Adjust padding since we removed the dots */
+      .exp-item, .achievement-item, .edu-item, .resp-item {
+        padding-left: 2rem; /* Reduce left padding */
       }
 
         /* Enhanced Typography */
         body {
             font-family: 'Space Grotesk', sans-serif;
             background: var(--bg-primary);
+            background-image: url('https://www.transparenttextures.com/patterns/white-wood.png');
+            background-attachment: fixed;
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
@@ -67,26 +113,21 @@
             margin-bottom: 1rem;
         }
 
-        /* Add these new utility classes for skill cards and project cards */
-        .skill-back {
-            background: var(--accent); /* Use solid accent color */
+        /* Add subtle section backgrounds for visual separation */
+        section:nth-child(even) {
+            background-color: var(--bg-primary);
+            background-image: url('https://www.transparenttextures.com/patterns/white-wood.png');
+            background-attachment: fixed;
         }
 
-        .project-card:hover .project-links a:hover {
-            background: var(--accent-secondary);
+        section:nth-child(odd) {
+            background-color: var(--bg-secondary);
+            background-image: url('https://www.transparenttextures.com/patterns/white-wood.png');
+            background-attachment: fixed;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.03);
         }
 
-        /* More vibrant floating animation for interest icons */
-        .interest-item i {
-            color: var(--accent);
-            transition: color var(--transition-speed), transform var(--transition-speed);
-        }
-
-        .interest-item:hover i {
-            color: var(--accent-secondary);
-        }
-
-        /* Standardized Glass Card */
+        /* Update glass card to work well with the textured background */
         .glass-card {
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -98,38 +139,18 @@
                         box-shadow var(--transition-speed),
                         background var(--transition-speed);
             background: var(--card-bg);
+            background-color: rgba(255, 255, 255, 0.7);
         }
         
-        .glass-card:hover {
-            transform: var(--card-hover-transform);
-            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+        /* Adjust for dark mode */
+        [data-theme="dark"] body,
+        [data-theme="dark"] section:nth-child(even),
+        [data-theme="dark"] section:nth-child(odd) {
+            background-image: none;
         }
-
-        /* Standardize headings across sections */
-        .glass-card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .glass-card h3::after {
-            display: none; /* Remove the underline completely */
-        }
-
-        /* Add subtle section backgrounds for visual separation */
-        section:nth-child(even) {
-            background-color: var(--bg-primary);
-        }
-
-        section:nth-child(odd) {
-            background-color: var(--bg-secondary);
-        }
-
-        /* Add subtle section dividers */
-        section:not(:last-child)::after {
-            display: none; /* Remove the divider completely */
+        
+        [data-theme="dark"] .glass-card {
+            background-color: var(--card-bg);
         }
 
         * {
@@ -147,18 +168,6 @@
         }
 
         /* Standardized timeline for experience and achievements */
-        .exp-item, .achievement-item, .edu-item, .resp-item {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: 2rem;
-            border-left: 3px solid var(--accent);
-            padding-bottom: 1rem;
-        }
-
-        .exp-item:last-child, .achievement-item:last-child {
-            margin-bottom: 0;
-        }
-
         .exp-meta, .edu-item p {
             color: var(--text-secondary);
             font-style: italic;
@@ -395,15 +404,12 @@
                       transform var(--transition-speed);
             color: var(--accent); /* Use solid accent color */
             font-weight: 700;
+            padding-bottom: 10px; /* Space for the dot */
         }
         
         .section-title.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .section-title::after {
-            display: none; /* Remove the underline completely */
         }
 
         /* Projects Grid */
@@ -1280,8 +1286,8 @@
     <section id="hero">
         <div id="particles-js"></div>
         <div class="hero-content">
-            <h1>Transforming Ideas into Intelligent Solutions</h1>
-            <p>AI/ML Engineer specializing in Deep Learning, NLP, and Cloud Computing. Passionate about building scalable AI systems.</p>
+            <h1>Connecting Dots: Ideas to Intelligent Solutions</h1>
+            <p>AI/ML Engineer specializing in Deep Learning, NLP, and Cloud Computing. Passionate about building scalable AI systems by connecting diverse skills and technologies.</p>
             <div class="btn-group">
                 <a href="#projects" class="btn btn-primary"><i class="fas fa-project-diagram"></i>View My Work</a>
                 <a href="lokesh.pdf" class="btn btn-resume" download><i class="fas fa-file-download"></i>Download Resume</a>
@@ -1372,7 +1378,7 @@
                     </div>
                     <p>Developed and compared multiple ML models to predict diseases based on user-input symptoms. Evaluated using accuracy and confusion matrix.</p>
                     <div class="project-links">
-                        <a href="https://github.com/BoddapuLokesh/Disease-Prediction" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/gsaikumar-123/Disease_Prediction" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -1660,7 +1666,7 @@
                         }
                     },
                     "color": {
-                        "value": "#00c2ff" /* Keep teal color for particles */
+                        "value": "#50C9F5" /* Updated to match the accent-highlight */
                     },
                     "shape": {
                         "type": "circle",
@@ -1680,7 +1686,7 @@
                     "line_linked": {
                         "enable": true,
                         "distance": 150,
-                        "color": "#00c2ff",
+                        "color": "#50C9F5", /* Updated to match the accent-highlight */
                         "opacity": 0.5,
                         "width": 1
                     },
@@ -1886,7 +1892,7 @@
                         }
                     },
                     "color": {
-                        "value": "#00c2ff"
+                        "value": "#50C9F5" /* Updated to match the accent-highlight */
                     },
                     "shape": {
                         "type": "circle",
@@ -1918,8 +1924,8 @@
                     "line_linked": {
                         "enable": true,
                         "distance": 150,
-                        "color": "#00c2ff",
-                        "opacity": 0.4, /* Increased line opacity */
+                        "color": "#50C9F5", /* Updated to match the accent-highlight */
+                        "opacity": 0.4,
                         "width": 1
                     },
                     "move": {
